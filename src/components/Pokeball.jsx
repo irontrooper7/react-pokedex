@@ -1,5 +1,5 @@
 import React from 'react'
-import { TimelineLite } from 'gsap/all'
+import { TimelineLite, Back } from 'gsap/all'
 
 class Pokeball extends React.Component {
 
@@ -28,8 +28,8 @@ class Pokeball extends React.Component {
         })
 
         this.showPokemon
-            .to(this.pokeball, 0.3, { scale: 0 , display: 'none'})
-            .to(this.pokeInfo, 0.3, {opacity: 1, scale: 1, display: 'block'})
+            .to(this.pokeball, 0.5, { scale: 0, rotate: 360})
+            .to(this.pokeInfo, 0.3, {scale: 1, ease: Back.easeOut})
 
     }
 

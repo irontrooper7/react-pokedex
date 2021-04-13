@@ -28,7 +28,7 @@ class Home extends React.Component {
                     <div className="grid">
                         {
                             dataB.map( (element) => (
-                                <div key={element.id} className="col-lg-3 col-xs-6">
+                                <div key={element.name} className="col-lg-3 col-xs-6">
                                     <Pokeball url={element.url}/>
                                 </div>
                             ))
