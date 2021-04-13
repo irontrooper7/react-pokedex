@@ -21,15 +21,16 @@ class Home extends React.Component {
     }
 
     render() {
-        const dataB = this.state.DB
+
         return (
             <section>
                 <div className="container">
                     <div className="grid">
                         {
-                            dataB.map( (element) => (
-                                <div key={element.name} className="col-lg-3 col-xs-6">
-                                    <Pokeball url={element.url}/>
+                            this.state.DB.map( e => (
+
+                                <div key={e.name} className="col-lg-2 col-xs-6">
+                                    <Pokeball url={e.url} load={true}/>
                                 </div>
                             ))
                         }

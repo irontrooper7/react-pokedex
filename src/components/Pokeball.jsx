@@ -26,10 +26,15 @@ class Pokeball extends React.Component {
                 image: data.sprites.front_default,
             })
         })
-
+        // CLICK ANIMATION
         this.showPokemon
             .to(this.pokeball, 0.5, { scale: 0, rotate: 360})
             .to(this.pokeInfo, 0.3, {scale: 1, ease: Back.easeOut})
+            // .play()
+
+        if(this.props.load) {
+            this.showPokemon.play()
+        }
 
     }
 
