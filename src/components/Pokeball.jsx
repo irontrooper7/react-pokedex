@@ -1,4 +1,5 @@
 import React from 'react'
+import { TimelineLite } from 'gsap/all'
 
 class Pokeball extends React.Component {
 
@@ -8,11 +9,15 @@ class Pokeball extends React.Component {
             status: false,
             name: '',
             image: '',
-
         }
+        this.pokeball = null;
+        this.pokeInfo = null;
+
+        this.showPokemon = new TimelineLite({ paused:true });
     }
 
     componentDidMount() {
+        // FETCH POKEMON DATA
         fetch(this.props.url)
         .then(response => response.json())
         .then(data => {
@@ -21,18 +26,21 @@ class Pokeball extends React.Component {
                 image: data.sprites.front_default,
             })
         })
-    }
 
+        this.showPokemon
+            .to(this.pokeball, 0.3, { scale: 0 , display: 'none'})
+            .to(this.pokeInfo, 0.3, {opacity: 1, scale: 1, display: 'block'})
+
+    }
 
 
     render() {
         return (
             <div className="pokeball-cont">
-                <div className="pokeball"></div>
-                <div className="multimedia">
+                <div ref={div => this.pokeball = div} className="pokeball" onClick={() => this.showPokemon.play()}></div>
+                <div ref={div => this.pokeInfo = div} className="multimedia" onClick={() => this.showPokemon.reverse()} >
                     <img src={this.state.image} alt={this.state.name}/>
                 </div>
-                <h3><strong>{this.state.name}</strong></h3>
             </div>
         )
     }
