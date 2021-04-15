@@ -26,6 +26,14 @@ class Home extends React.Component {
             <section>
                 <div className="container">
                     <div className="grid">
+                        <div className="col-lg-12 col-xs-12 algText">
+                            <h1>Kanto - Pokedex</h1>
+                            <p>
+                                A simple pokedex app whith React js
+                                <br/>
+                                I consume the <a href="https://pokeapi.co/">PokeAPI</a> and make a lazy loading.
+                            </p>
+                        </div>
                         {
                             this.state.DB.map( e => (
 
